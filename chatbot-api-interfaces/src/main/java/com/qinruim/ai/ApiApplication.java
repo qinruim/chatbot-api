@@ -1,8 +1,7 @@
 package com.qinruim.ai;
 
 import org.springframework.boot.SpringApplication;
-
-import javax.swing.*;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
  * @Package： com.qinruim.ai
@@ -11,9 +10,9 @@ import javax.swing.*;
  * @Date： 2023-11-02 15:57
  * @description: 启动入口
  */
-public class Application {
+@SpringBootApplication
+public class ApiApplication {
     public static void main(String[] args) {
-//        System.out.println("Hello world!");
-//        SpringApplication.run();
+        SpringApplication.run(ApiApplication.class,args);
     }
 }
