@@ -5,7 +5,12 @@ public class ReqData {
 
     public String[] image_ids = new String[]{};
 
-    public String silenced;
+    public boolean silenced;
+
+    public ReqData(String text, boolean silenced) {
+        this.text = text;
+        this.silenced = silenced;
+    }
 
     public String getText() {
         return text;
@@ -23,11 +28,11 @@ public class ReqData {
         this.image_ids = image_ids;
     }
 
-    public String getSilenced() {
+    public boolean isSilenced() {
         return silenced;
     }
 
-    public void setSilenced(String silenced) {
+    public void setSilenced(boolean silenced) {
         this.silenced = silenced;
     }
 }
