@@ -1,7 +1,9 @@
 package com.qinruim.ai.zsxq.model.vo;
 
-public class Owner
-{
+/**
+ * 提问者
+ */
+public class Owner {
 
     private String user_id;
 

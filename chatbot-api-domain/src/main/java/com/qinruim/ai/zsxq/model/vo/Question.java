@@ -1,12 +1,11 @@
 package com.qinruim.ai.zsxq.model.vo;
 
-public class Question
-{
+public class Question {
     private Owner owner;
 
     private Questionee questionee;
 
-    private String text;
+    private String text;//问题内容
 
     private boolean expired;
 
@@ -15,6 +14,8 @@ public class Question
     private OwnerDetail owner_detail;
 
     private String owner_location;
+
+
 
     public void setOwner(Owner owner){
         this.owner = owner;

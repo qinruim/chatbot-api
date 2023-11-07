@@ -1,5 +1,8 @@
 package com.qinruim.ai.zsxq.model.req;
 
+/**
+ * 请求数据
+ */
 public class ReqData {
     private String text;
 

@@ -1,6 +1,5 @@
 package com.qinruim.ai.zsxq.model.aggregates;
 
-import com.qinruim.ai.zsxq.model.req.ReqData;
 import com.qinruim.ai.zsxq.model.res.ResData;
 
 /**
@@ -9,22 +8,22 @@ import com.qinruim.ai.zsxq.model.res.ResData;
  * @description: 待回答问题聚合信息
  */
 public class UnAnsweredQuestionsAggregates {
-    private boolean succeed;
-    private ResData resData;
+    private boolean succeeded;
+    private ResData resp_data;  //变量名与相应的json保持一致 便于自动转换
 
-    public boolean isSucceed() {
-        return succeed;
+    public boolean isSucceeded() {
+        return succeeded;
     }
 
-    public void setSucceed(boolean succeed) {
-        this.succeed = succeed;
+    public void setSucceeded(boolean succeeded) {
+        this.succeeded = succeeded;
     }
 
-    public ResData getResData() {
-        return resData;
+    public ResData getResp_data() {
+        return resp_data;
     }
 
-    public void setResData(ResData resData) {
-        this.resData = resData;
+    public void setResp_data(ResData resp_data) {
+        this.resp_data = resp_data;
     }
 }

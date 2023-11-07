@@ -66,10 +66,9 @@ public class ZsxqApi implements IZsxqApi {
 
         post.addHeader("cookie",cookie);
         post.addHeader("Content-Type","application/json; charset=UTF-8");
-        post.addHeader("user-agent","Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36 Edg/119.0.0.0");
+        post.addHeader("user-agent","Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Mobile Safari/537.36 Edg/119.0.0.0");
 
         //响应的json
-//        String paramJson = "{\"req_data\":{\"text\":\"" + text + "\\n\",\"image_ids\":[],\"" + silenced + "\":false}}";
         //封装信息
         AnswerReq answerReq = new AnswerReq(new ReqData(text,silenced));
         String paramJson = JSONObject.fromObject(answerReq).toString();
@@ -84,7 +83,7 @@ public class ZsxqApi implements IZsxqApi {
             String jsonStr = EntityUtils.toString(response.getEntity());
             logger.info("回答问题结果。 groupId：{} topicId : {} jsonStr: {}",groupId,topicId,jsonStr);
             AnswerRes answerRes = JSON.parseObject(jsonStr, AnswerRes.class);
-            return answerRes.isSucceed();
+            return answerRes.isSucceeded();
         }else {
             throw new RuntimeException("answer err code is : " + response.getStatusLine().getStatusCode());
         }

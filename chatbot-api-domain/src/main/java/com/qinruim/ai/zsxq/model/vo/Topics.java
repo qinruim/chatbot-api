@@ -29,6 +29,8 @@ public class Topics {
 
     private UserSpecific user_specific;
 
+
+
     public void setTopic_id(String topic_id){
         this.topic_id = topic_id;
     }

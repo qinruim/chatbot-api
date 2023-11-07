@@ -6,13 +6,13 @@ package com.qinruim.ai.zsxq.model.res;
  * @description: 请求问答结果
  */
 public class AnswerRes {
-    private boolean succeed;
+    private boolean succeeded;
 
-    public boolean isSucceed() {
-        return succeed;
+    public boolean isSucceeded() {
+        return succeeded;
     }
 
-    public void setSucceed(boolean succeed) {
-        this.succeed = succeed;
+    public void setSucceeded(boolean succeeded) {
+        this.succeeded = succeeded;
     }
 }

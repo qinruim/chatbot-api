@@ -1,13 +1,22 @@
 package com.qinruim.ai.zsxq.model.vo;
 
-public class Group
-{
-   
+public class Group {
+
     private String group_id;
     
     public String name;
    
     public String type;
+
+    private String background_url;
+
+    public String getBackground_url() {
+        return background_url;
+    }
+
+    public void setBackground_url(String background_url) {
+        this.background_url = background_url;
+    }
 
     public String getGroup_id() {
         return group_id;

@@ -1,7 +1,9 @@
 package com.qinruim.ai.zsxq.model.vo;
 
-public class Questionee
-{
+/**
+ * 被提问的人
+ */
+public class Questionee {
     private String user_id;
 
     private String name;

@@ -56,12 +56,12 @@ public class ApiTest {
         //httpClient：封装数据信息
         CloseableHttpClient httpClient = HttpClientBuilder.create().build();
 
-        HttpPost post = new HttpPost("https://api.zsxq.com/v2/topics/588541458252884/answer");
+        HttpPost post = new HttpPost("https://api.zsxq.com/v2/topics/811248421525182/answer");
 
         post.addHeader("cookie","zsxq_access_token=E5E28CF6-4D33-91BE-ED43-9DA83847B4D3_593C1DD7E6776C47; zsxqsessionid=709816cd622e1d50904e9d35cc185e12; abtest_env=product");
         post.addHeader("Content-Type","application/json; charset=UTF-8");
         //响应的json
-        String paramJson = "{\"req_data\":{\"text\":\"努力向上！\\n\",\"image_ids\":[],\"silenced\":false}}";
+        String paramJson = "{\"req_data\":{\"text\":\"我也不会啊！！！\\n\",\"image_ids\":[],\"silenced\":false}}";
         //封装信息
         StringEntity stringEntity = new StringEntity(paramJson, ContentType.create("text/json", "UTF-8"));
         post.setEntity(stringEntity);
