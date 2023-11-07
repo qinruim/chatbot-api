@@ -1,5 +1,6 @@
 package com.qinruim.ai.zsxq.model.aggregates;
 
+import com.alibaba.fastjson.annotation.JSONField;
 import com.qinruim.ai.zsxq.model.res.ResData;
 
 /**
@@ -9,7 +10,11 @@ import com.qinruim.ai.zsxq.model.res.ResData;
  */
 public class UnAnsweredQuestionsAggregates {
     private boolean succeeded;
-    private ResData resp_data;  //变量名与相应的json保持一致 便于自动转换
+
+    //变量名与相应的json保持一致 便于自动转换
+    //或者如这里所示 手动指定匹配 否则会NPE
+    @JSONField(name="resp_data")
+    private ResData resData;
 
     public boolean isSucceeded() {
         return succeeded;
@@ -19,11 +24,11 @@ public class UnAnsweredQuestionsAggregates {
         this.succeeded = succeeded;
     }
 
-    public ResData getResp_data() {
-        return resp_data;
+    public ResData getResData() {
+        return resData;
     }
 
-    public void setResp_data(ResData resp_data) {
-        this.resp_data = resp_data;
+    public void setResData(ResData resData) {
+        this.resData = resData;
     }
 }

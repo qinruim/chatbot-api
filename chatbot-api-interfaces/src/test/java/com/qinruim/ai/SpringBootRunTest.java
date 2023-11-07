@@ -4,7 +4,6 @@ import com.alibaba.fastjson.JSON;
 import com.qinruim.ai.zsxq.IZsxqApi;
 import com.qinruim.ai.zsxq.model.aggregates.UnAnsweredQuestionsAggregates;
 import com.qinruim.ai.zsxq.model.vo.Topics;
-import com.qinruim.ai.zsxq.service.ZsxqApi;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -40,21 +39,21 @@ public class SpringBootRunTest {
         UnAnsweredQuestionsAggregates unAnsweredQuestionsAggregates = zsxqApi.queryUnAnsweredQuestionsTopicIds(groupId, cookie);
         logger.info("测试结果：{}", JSON.toJSONString(unAnsweredQuestionsAggregates));
 
-        List<Topics> topics = unAnsweredQuestionsAggregates.getResp_data().getTopics();
-//        for (Topics topic : topics) {
-//            String topicId = topic.getTopic_id();
-//            String text = topic.getQuestion().getText();
-//            logger.info("topicId: {} text : {}",topicId,text);
-//        }
+        List<Topics> topics = unAnsweredQuestionsAggregates.getResData().getTopics();
+        for (Topics topic : topics) {
+            String topicId = topic.getTopic_id();
+            String text = topic.getQuestion().getText();
+            logger.info("topicId: {} text : {}",topicId,text);
+        }
 
 
         //回答问题
-        Topics topic1 = topics.get(0);
-        String topicId = topic1.getTopic_id();
-        String text = topic1.getQuestion().getText();
-        String answerText = text + "的答案是： 我也不知道！";
-        logger.info("topicId: {} text : {} answerText : {}",topicId,text,answerText);
-        zsxqApi.answer(groupId,cookie,topicId,answerText,false);
+//        Topics topic1 = topics.get(0);
+//        String topicId = topic1.getTopic_id();
+//        String text = topic1.getQuestion().getText();
+//        String answerText = text + "的答案是： 我也不知道！";
+//        logger.info("topicId: {} text : {} answerText : {}",topicId,text,answerText);
+//        zsxqApi.answer(groupId,cookie,topicId,answerText,false);
 
     }
 

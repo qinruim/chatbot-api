@@ -46,15 +46,15 @@ public class ZsxqApi implements IZsxqApi {
 
         //若状态码是200
         if (response.getStatusLine().getStatusCode() == HttpStatus.SC_OK){
-            //将返回结果转成String
+            //将返回结果由实体转成jsonString
             String jsonStr = EntityUtils.toString(response.getEntity());
             logger.info("拉取提问数据。 groupId：{} jsonStr: {}",groupId,jsonStr);
             //json转成指定对象
-            return JSON.parseObject(jsonStr, UnAnsweredQuestionsAggregates.class);
+            UnAnsweredQuestionsAggregates unAnsweredQuestionsAggregates = JSON.parseObject(jsonStr, UnAnsweredQuestionsAggregates.class);
+            return unAnsweredQuestionsAggregates;
         }else {
             throw new RuntimeException("queryUnAnsweredQuestionsTopicIds err code is : " + response.getStatusLine().getStatusCode());
         }
-
     }
 
     @Override
@@ -68,14 +68,12 @@ public class ZsxqApi implements IZsxqApi {
         post.addHeader("Content-Type","application/json; charset=UTF-8");
         post.addHeader("user-agent","Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Mobile Safari/537.36 Edg/119.0.0.0");
 
-        //响应的json
-        //封装信息
+        //封装请求信息为json，再转成实体
         AnswerReq answerReq = new AnswerReq(new ReqData(text,silenced));
         String paramJson = JSONObject.fromObject(answerReq).toString();
-
         StringEntity stringEntity = new StringEntity(paramJson, ContentType.create("text/json", "UTF-8"));
-        post.setEntity(stringEntity);
 
+        post.setEntity(stringEntity);
         CloseableHttpResponse response = httpClient.execute(post);
         //若状态码是200
         if (response.getStatusLine().getStatusCode() == HttpStatus.SC_OK){
