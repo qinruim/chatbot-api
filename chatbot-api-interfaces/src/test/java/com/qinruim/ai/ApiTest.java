@@ -1,5 +1,6 @@
 package com.qinruim.ai;
 
+import okhttp3.WebSocketListener;
 import org.apache.http.HttpStatus;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
@@ -105,4 +106,17 @@ public class ApiTest {
         }
 
     }
+
+
+    /**
+     * 讯飞星火大模型测试
+     * @throws IOException
+     */
+    @Test
+    public void test_spark() throws IOException {
+
+
+    }
+
+
 }
