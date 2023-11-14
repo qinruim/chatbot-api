@@ -1,7 +1,9 @@
 package com.qinruim.ai;
 
 import okhttp3.WebSocketListener;
+import org.apache.http.HttpHost;
 import org.apache.http.HttpStatus;
+import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
@@ -9,6 +11,8 @@ import org.apache.http.entity.ContentType;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
+import org.apache.http.impl.client.HttpClients;
+import org.apache.http.impl.conn.DefaultProxyRoutePlanner;
 import org.apache.http.util.EntityUtils;
 import org.junit.Test;
 
@@ -87,6 +91,7 @@ public class ApiTest {
         post.addHeader("Content-Type","application/json");
         post.addHeader("Authorization","Bearer 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");
 
+
         //请求信息
         String paramJson = "{\n" +
                 "     \"model\": \"gpt-3.5-turbo\",\n" +
@@ -108,15 +113,43 @@ public class ApiTest {
     }
 
 
+    @Test
+    public void test_chatGPT2() throws IOException {
+        String url = "https://api.openai.com/v1/chat/completions";
+
+        HttpHost proxy = new HttpHost("127.0.0.1", 7890);
+        DefaultProxyRoutePlanner routePlanner = new DefaultProxyRoutePlanner(proxy);
+
+        HttpPost post = new HttpPost(url);
+        post.addHeader("Content-Type", "application/json");
+        post.addHeader("Authorization", "Bearer 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");
+
+        String paramJson = "{\"model\": \"text-davinci-003\", \"prompt\": \"帮我写一个java冒泡排序\", \"temperature\": 0, \"max_tokens\": 1024}";
+
+        StringEntity stringEntity = new StringEntity(paramJson, ContentType.create("text/json", "UTF-8"));
+        post.setEntity(stringEntity);
+
+        CloseableHttpClient client = HttpClients.custom().setRoutePlanner(routePlanner).build();
+        CloseableHttpResponse response = client.execute(new HttpHost("api.openai.com"), post);
+        if (response.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
+            String res = EntityUtils.toString(response.getEntity());
+            System.out.println(res);
+        } else {
+            System.out.println("****************************************************************************");
+            System.out.println(response.getStatusLine().getStatusCode());
+            System.out.println("****************************************************************************");
+        }
+    }
+
     /**
      * 讯飞星火大模型测试
      * @throws IOException
      */
-    @Test
-    public void test_spark() throws IOException {
-
-
-    }
+//    @Test
+//    public void test_spark() throws IOException {
+//
+//
+//    }
 
 
 }
